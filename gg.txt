@@ -1,6 +1,5 @@
 
 import cv2
-import time
 
 camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
@@ -8,43 +7,32 @@ if not camera.isOpened():
     print("Camera not detected!")
     exit()
 
-# Set MJPG format first
-camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
+def show_format():
+    fourcc = int(camera.get(cv2.CAP_PROP_FOURCC))
+    codec = "".join(chr((fourcc >> (8 * i)) & 255) for i in range(4))
+    print("Current format:", codec)
 
-# Set resolution and FPS
+print("Before changing:")
+show_format()
+
+# Try to switch to MJPG
+success = camera.set(
+    cv2.CAP_PROP_FOURCC,
+    cv2.VideoWriter_fourcc(*"MJPG")
+)
+
+print("MJPG setting accepted:", success)
+
+print("After changing:")
+show_format()
+
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 camera.set(cv2.CAP_PROP_FPS, 60)
 
-# Set manual exposure
-camera.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
-camera.set(cv2.CAP_PROP_EXPOSURE, -7)
+print("After resolution and FPS settings:")
+show_format()
 
-# Check camera settings
-fourcc = int(camera.get(cv2.CAP_PROP_FOURCC))
-codec = "".join(chr((fourcc >> 8 * i) & 255) for i in range(4))
-
-print("Camera opened:", camera.isOpened())
-print("Video format:", codec)
-print("Resolution:", camera.get(cv2.CAP_PROP_FRAME_WIDTH),
-      "x", camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
-print("Camera reported FPS:", camera.get(cv2.CAP_PROP_FPS))
-
-# Measure FPS
-for _ in range(15):
-    camera.read()
-
-frames = 0
-start = time.perf_counter()
-
-while frames < 120:
-    ret, frame = camera.read()
-    if not ret:
-        break
-    frames += 1
-
-elapsed = time.perf_counter() - start
-if elapsed > 0:
-    print("Measured FPS:", round(frames / elapsed, 2))
+print("Reported FPS:", camera.get(cv2.CAP_PROP_FPS))
 
 camera.release()
