@@ -1,66 +1,28 @@
 
 import cv2
-import time
 
-# Camera settings
-CAMERA_INDEX = 1
-CAMERA_WIDTH = 1280
-CAMERA_HEIGHT = 720
-FPS = 60
-EXPOSURE = -7
+for index in [0, 1]:
+    camera = cv2.VideoCapture(index, cv2.CAP_DSHOW)
 
-# Open camera using DirectShow
-camera = cv2.VideoCapture(CAMERA_INDEX, cv2.CAP_DSHOW)
+    if not camera.isOpened():
+        print(f"Camera {index}: Not available")
+        continue
 
-if not camera.isOpened():
-    print("ERROR: Camera not detected!")
-    exit()
+    print(f"Showing camera index {index}")
+    print("Press Q to check the next camera")
 
-# Configure camera
-camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
-camera.set(cv2.CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH)
-camera.set(cv2.CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT)
-camera.set(cv2.CAP_PROP_FPS, FPS)
+    while True:
+        ret, frame = camera.read()
 
-# Set manual exposure
-camera.set(cv2.CAP_PROP_AUTO_EXPOSURE, 0.25)
-camera.set(cv2.CAP_PROP_EXPOSURE, EXPOSURE)
+        if not ret:
+            break
 
-# Check actual video format
-fourcc = int(camera.get(cv2.CAP_PROP_FOURCC))
-codec = "".join(chr((fourcc >> (8 * i)) & 255) for i in range(4))
+        cv2.imshow(f"Camera Index {index}", frame)
 
-print("Camera opened:", camera.isOpened())
-print("Video format:", codec)
-print("Resolution:",
-      camera.get(cv2.CAP_PROP_FRAME_WIDTH),
-      "x",
-      camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
-print("Requested FPS:", FPS)
-print("Camera reported FPS:", camera.get(cv2.CAP_PROP_FPS))
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
 
-# Warm up camera
-for _ in range(15):
-    camera.read()
+    camera.release()
+    cv2.destroyAllWindows()
 
-# Measure actual FPS
-frames = 0
-start_time = time.perf_counter()
-
-while frames < 120:
-    ret, frame = camera.read()
-
-    if not ret:
-        print("ERROR: Failed to capture frame!")
-        break
-
-    frames += 1
-
-elapsed = time.perf_counter() - start_time
-
-if elapsed > 0:
-    measured_fps = frames / elapsed
-    print("Measured FPS:", round(measured_fps, 2))
-
-camera.release()
-print("Camera test completed!")
+print("Camera check completed!")
