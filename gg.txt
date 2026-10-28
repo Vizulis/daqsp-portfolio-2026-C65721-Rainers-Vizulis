@@ -1,1 +1,46 @@
-python -c "import cv2; c=cv2.VideoCapture(0); c.set(cv2.CAP_PROP_FOURCC,cv2.VideoWriter_fourcc(*'MJPG')); c.set(cv2.CAP_PROP_FRAME_WIDTH,1280); c.set(cv2.CAP_PROP_FRAME_HEIGHT,720); c.set(cv2.CAP_PROP_FPS,60); print('Camera opened:',c.isOpened()); print('Resolution:',c.get(cv2.CAP_PROP_FRAME_WIDTH),'x',c.get(cv2.CAP_PROP_FRAME_HEIGHT)); print('FPS:',c.get(cv2.CAP_PROP_FPS)); c.release()"
+
+import cv2
+import time
+
+# Open camera using DirectShow
+camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+
+if not camera.isOpened():
+    print("ERROR: Camera not detected!")
+    exit()
+
+# Configure camera
+camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
+camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+camera.set(cv2.CAP_PROP_FPS, 60)
+
+# Display camera settings
+print("Camera opened:", camera.isOpened())
+print("Resolution:",
+      camera.get(cv2.CAP_PROP_FRAME_WIDTH),
+      "x",
+      camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
+print("Requested FPS: 60")
+print("Camera reported FPS:", camera.get(cv2.CAP_PROP_FPS))
+
+# Measure actual FPS
+frames = 0
+start_time = time.perf_counter()
+
+while frames < 120:
+    ret, frame = camera.read()
+
+    if not ret:
+        print("ERROR: Failed to capture frame!")
+        break
+
+    frames += 1
+
+elapsed = time.perf_counter() - start_time
+
+if elapsed > 0:
+    print("Measured FPS:", round(frames / elapsed, 2))
+
+camera.release()
+print("Camera test completed!")
