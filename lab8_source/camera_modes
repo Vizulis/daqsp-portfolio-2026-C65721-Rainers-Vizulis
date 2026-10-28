@@ -1,0 +1,29 @@
+
+import subprocess
+import imageio_ffmpeg
+
+ffmpeg_path = imageio_ffmpeg.get_ffmpeg_exe()
+
+command = [
+    ffmpeg_path,
+    "-hide_banner",
+    "-f", "dshow",
+    "-list_options", "true",
+    "-i", "video=c922 Pro Stream Webcam"
+]
+
+output = subprocess.getoutput(
+    subprocess.list2cmdline(command)
+)
+
+print("=== AVAILABLE 60 FPS MODES ===")
+
+found = False
+
+for line in output.splitlines():
+    if "fps=60" in line.lower():
+        print(line)
+        found = True
+
+if not found:
+    print("No 60 FPS modes found.")

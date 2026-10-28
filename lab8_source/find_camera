@@ -1,0 +1,15 @@
+
+import cv2
+
+for index in range(5):
+    camera = cv2.VideoCapture(index, cv2.CAP_DSHOW)
+
+    if camera.isOpened():
+        print(f"Camera index {index}: AVAILABLE")
+        print("Resolution:",
+              camera.get(cv2.CAP_PROP_FRAME_WIDTH),
+              "x",
+              camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        camera.release()
+    else:
+        print(f"Camera index {index}: Not available")
