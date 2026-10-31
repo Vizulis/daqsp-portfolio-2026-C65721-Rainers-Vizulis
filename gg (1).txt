@@ -1,1 +1,1 @@
-Copy-Item -Path ".\data_dir" -Destination "$env:USERPROFILE\Downloads\Homework2" -Recurse -Force
+Copy-Item ".\acquisition.py" "$env:USERPROFILE\Downloads\Homework2\" -Force
