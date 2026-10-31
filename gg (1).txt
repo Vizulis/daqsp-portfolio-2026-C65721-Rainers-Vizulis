@@ -1,20 +1,2 @@
 
-def save_images(data, trigger_time=None):
-    if trigger_time is None:
-        trigger_time = datetime.now()
-
-    image_save_dir = os.path.join(
-        SAVE_DIR,
-        f"images_{trigger_time.strftime('%Y%m%d_%H%M%S')}"
-    )
-
-    os.makedirs(image_save_dir, exist_ok=True)
-
-    for i, (timestamp, frame) in enumerate(data):
-        filename = os.path.join(
-            image_save_dir,
-            f"frame_{i:04d}_{timestamp:.6f}.png"
-        )
-        cv2.imwrite(filename, frame)
-
-    print(f"Images saved in {image_save_dir}")
+python -c "import glob,os; f=sorted(glob.glob('data_dir/images_20261031_154624/frame_*.png')); t=[float(os.path.basename(x).split('_')[-1][:-4]) for x in f]; print('Frames:',len(t)); print('Duration:',round(t[-1]-t[0],3),'s'); print('Actual FPS:',round((len(t)-1)/(t[-1]-t[0]),2))"
