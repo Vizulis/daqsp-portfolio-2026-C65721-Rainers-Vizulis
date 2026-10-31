@@ -1,2 +1,1 @@
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-.\.venv\Scripts\Activate.ps1
+python -c "import cv2, nidaqmx; print('Python libraries OK')"
