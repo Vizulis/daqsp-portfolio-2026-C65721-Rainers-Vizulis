@@ -1,1 +1,1 @@
-Copy-Item ".\data_dir\images_20261031_181525" "$env:USERPROFILE\Downloads\Homework2\" -Recurse -Force
+Copy-Item ".\acquisition.py" "$env:USERPROFILE\Downloads\Homework2\acquisition_Task2.py" -Force
