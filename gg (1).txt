@@ -1,7 +1,9 @@
-
+def save_images(data, image_save_dir):
     for i, (timestamp, frame) in enumerate(data):
         filename = os.path.join(
             image_save_dir,
             f"frame_{i:04d}_{timestamp:.6f}.png"
         )
         cv2.imwrite(filename, frame)
+
+    print(f"Images saved in {image_save_dir}")
