@@ -1,2 +1,1 @@
-
-$f = Get-ChildItem ".\data_dir\images_20261031_165849\frame_*.png" | Sort-Object Name; $t = $f | ForEach-Object { [double](($_.BaseName -split "_")[-1]) }; "Frames: $($f.Count)"; "Before trigger: $([math]::Round(1793458727.954970 - $t[0], 3)) s"; "After trigger: $([math]::Round($t[-1] - 1793458727.954970, 3)) s"; "Actual FPS: $([math]::Round(($f.Count - 1) / ($t[-1] - $t[0]), 2))"
+Copy-Item -Path ".\data_dir" -Destination "$env:USERPROFILE\Downloads\Homework2" -Recurse -Force
