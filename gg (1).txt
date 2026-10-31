@@ -1,1 +1,1 @@
-cd .\daqsp-portfolio-2026-C65721-Rainers-Vizulis-main\lab8_source; python .\acquisition.py
+Get-ChildItem .\data_dir\images_* -Directory | Sort-Object Name | Select-Object -Last 1 -ExpandProperty FullName
