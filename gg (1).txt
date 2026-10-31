@@ -1,1 +1,22 @@
-"Lab 08 - Task 1`nDate: 2026-10-31`nCamera: ASUS FHD webcam`nResolution: 1280x720`nConfigured FPS: 30`nFrames: 106`nBefore trigger: 1.998 s`nAfter trigger: 2.014 s`nActual FPS: 26.17`nExposure: -5`nFocus: 50" | Set-Content "$env:USERPROFILE\Downloads\Homework2\Task1_Results.txt"
+
+def wait_for_hw_trigger():
+    """Wait for a falling edge on PFI0."""
+    with nidaqmx.Task() as task:
+        task.di_channels.add_di_chan(TRIGGER_CHANNEL)
+
+        previous_state = task.read()
+        start_time = time.time()
+
+        while time.time() - start_time < DAQ_TIMEOUT:
+            if stop_flag.is_set():
+                return False
+
+            current_state = task.read()
+
+            if previous_state and not current_state:
+                return True
+
+            previous_state = current_state
+            time.sleep(0.001)
+
+    return False
