@@ -1,1 +1,22 @@
-python -c "import cv2, nidaqmx; print('Python libraries OK')"
+
+import cv2
+
+camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+
+if camera.isOpened():
+    print("Camera detected successfully!")
+
+    ret, frame = camera.read()
+
+    if ret:
+        print("Camera image captured successfully!")
+        print("Resolution:", frame.shape[1], "x", frame.shape[0])
+        cv2.imshow("Camera Test", frame)
+        cv2.waitKey(0)
+    else:
+        print("Failed to capture image!")
+else:
+    print("Camera not detected!")
+
+camera.release()
+cv2.destroyAllWindows()
