@@ -1,20 +1,32 @@
 
-@"
-Lab 08 - Task 2: Hardware Trigger
-Date: 2026-10-31
-DAQ device: NI USB-6211
-Device name: Dev1
-Physical trigger pin: PFI0
-Python digital channel: Dev1/port0/line0
-Pull-down resistor: 10 kOhm
-Trigger type: Falling edge
-DAQ timeout: 10 s
-Camera: ASUS FHD webcam
-Resolution: 1280 x 720
-Configured FPS: 30
+def analog_capture():
+    with nidaqmx.Task() as task:
+        task.ai_channels.add_ai_voltage_chan(
+            ANALOG_CHANNEL,
+            terminal_config=TerminalConfiguration.RSE,
+            min_val=-ANALOG_RANGE,
+            max_val=ANALOG_RANGE
+        )
 
-Result:
-The hardware trigger was successfully detected.
-The camera recorded and saved images after the trigger.
-Image folder: images_20261031_181525
-"@ | Set-Content "$env:USERPROFILE\Downloads\Homework2\Task2_Results.txt"
+        task.timing.cfg_samp_clk_timing(
+            rate=ANALOG_SAMPLE_RATE,
+            sample_mode=AcquisitionType.FINITE,
+            samps_per_chan=ANALOG_TOTAL_SAMPLES
+        )
+
+        task.triggers.reference_trigger.cfg_dig_edge_ref_trig(
+            trigger_source=f"/{DEVICE_NAME}/PFI0",
+            pretrigger_samples=ANALOG_PRETRIGGER_SAMPLES,
+            trigger_edge=Edge.FALLING
+        )
+
+        task.start()
+
+        data = task.read(
+            number_of_samples_per_channel=ANALOG_TOTAL_SAMPLES,
+            timeout=DAQ_TIMEOUT
+        )
+
+        print("All analog data acquired!")
+        task.stop()
+        save_analog_data(data)
