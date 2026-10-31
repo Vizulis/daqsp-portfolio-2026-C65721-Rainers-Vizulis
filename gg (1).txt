@@ -1,1 +1,1 @@
-python -m pip install -r requirements.txt
+python -c "import cv2, nidaqmx; print('Python libraries OK')"
