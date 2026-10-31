@@ -1,3 +1,1 @@
-with open(os.path.join(SAVE_DIR, "trigger_time.txt"), "w") as f:
-    f.write(f"Trigger timestamp: {trigger_time:.6f}\n")
-    f.write(f"Trigger date and time: {datetime.fromtimestamp(trigger_time)}\n")
+Get-ChildItem frame_*.png | Sort-Object Name | Select-Object -Last 1 -ExpandProperty Name
