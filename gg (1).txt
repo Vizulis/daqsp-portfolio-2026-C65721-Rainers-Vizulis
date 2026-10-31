@@ -1,2 +1,3 @@
-
-python -c "import glob,os; f=sorted(glob.glob('data_dir/images_20261031_154624/frame_*.png')); t=[float(os.path.basename(x).split('_')[-1][:-4]) for x in f]; print('Frames:',len(t)); print('Duration:',round(t[-1]-t[0],3),'s'); print('Actual FPS:',round((len(t)-1)/(t[-1]-t[0]),2))"
+with open(os.path.join(SAVE_DIR, "trigger_time.txt"), "w") as f:
+    f.write(f"Trigger timestamp: {trigger_time:.6f}\n")
+    f.write(f"Trigger date and time: {datetime.fromtimestamp(trigger_time)}\n")
