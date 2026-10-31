@@ -1,2 +1,2 @@
-images_to_save = [(t, frame) for t, frame in frame_buffer if t >= trigger_time - CAMERA_BUFFER_TIME_SECONDS]
-save_images(images_to_save)
+cd ..\..
+python .\acquisition.py
