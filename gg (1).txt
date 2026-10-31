@@ -3,20 +3,23 @@ import cv2
 
 camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
-if camera.isOpened():
-    print("Camera detected successfully!")
+if not camera.isOpened():
+    print("Camera not detected!")
+    exit()
 
+print("Camera opened successfully!")
+
+while True:
     ret, frame = camera.read()
 
-    if ret:
-        print("Camera image captured successfully!")
-        print("Resolution:", frame.shape[1], "x", frame.shape[0])
-        cv2.imshow("Camera Test", frame)
-        cv2.waitKey(0)
-    else:
-        print("Failed to capture image!")
-else:
-    print("Camera not detected!")
+    if not ret:
+        print("Failed to read frame!")
+        break
+
+    cv2.imshow("Live Camera", frame)
+
+    if cv2.waitKey(1) & 0xFF == ord("q"):
+        break
 
 camera.release()
 cv2.destroyAllWindows()
