@@ -1,1 +1,1 @@
-Copy-Item ".\acquisition.py" "$env:USERPROFILE\Downloads\Homework2\" -Force
+"Lab 08 - Task 1`nDate: 2026-10-31`nCamera: ASUS FHD webcam`nResolution: 1280x720`nConfigured FPS: 30`nFrames: 106`nBefore trigger: 1.998 s`nAfter trigger: 2.014 s`nActual FPS: 26.17`nExposure: -5`nFocus: 50" | Set-Content "$env:USERPROFILE\Downloads\Homework2\Task1_Results.txt"
