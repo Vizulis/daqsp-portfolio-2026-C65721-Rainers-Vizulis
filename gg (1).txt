@@ -1,2 +1,1 @@
-cd ..\..
-python .\acquisition.py
+cd .\daqsp-portfolio-2026-C65721-Rainers-Vizulis-main\lab8_source; python .\acquisition.py
