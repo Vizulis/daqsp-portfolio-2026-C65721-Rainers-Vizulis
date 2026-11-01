@@ -1,2 +1,1 @@
-if TRIGGER_LEVEL is not None:
-    plt.axhline(y=TRIGGER_LEVEL, color="black", linestyle="dashed")
+C:\Users\vboxuser\Downloads\daqsp-portfolio-2026-C65721-Rainers-Vizulis-main\daqsp-portfolio-2026-C65721-Rainers-Vizulis-main\lab8_source\data_dir
