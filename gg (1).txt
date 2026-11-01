@@ -1,1 +1,1 @@
-C:\Users\vboxuser\Downloads\daqsp-portfolio-2026-C65721-Rainers-Vizulis-main\daqsp-portfolio-2026-C65721-Rainers-Vizulis-main\lab8_source\data_dir
+Copy-Item ".\data_dir\analog_data_20261101_125646.csv" "$env:USERPROFILE\Downloads\Homework2\" -Force
