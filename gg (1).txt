@@ -1,1 +1,1 @@
-Copy-Item ".\undistort_images.py" "$env:USERPROFILE\Downloads\Homework2\" -Force
+Copy-Item ".\data_dir\undistorted_task3" "$env:USERPROFILE\Downloads\Homework2\" -Recurse -Force
