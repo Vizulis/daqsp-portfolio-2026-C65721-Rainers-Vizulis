@@ -1,2 +1,1 @@
-
-Get-ChildItem ".\data_dir" -Recurse -File -Filter "undistorted_frame_0081*.png" | ForEach-Object { $_.DirectoryName }
+Copy-Item ".\data_dir\undistored_task3" "$env:USERPROFILE\Downloads\Homework2\" -Recurse -Force
