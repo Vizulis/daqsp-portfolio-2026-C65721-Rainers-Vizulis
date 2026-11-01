@@ -1,7 +1,6 @@
-
-Notes:
-The ball drop was recorded using the camera and NI USB-6211.
-The analog signal contains visible voltage peaks after the trigger.
-The ball impact was estimated to occur around frame 0081.
-The exact trigger threshold voltage was not measured.
-The precise synchronization between the analog data and camera frames was not verified.
+UREF measurement:
+Measured using NI USB-6211, channel Dev1/ai1.
+Input configuration: RSE.
+Measured UREF voltage: approximately 1.50 V.
+The voltage stabilized after an initial decrease.
+The relationship between UREF and the analog trigger threshold was not verified.
