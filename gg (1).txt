@@ -1,2 +1,1 @@
-
-python -c "import cv2; c=cv2.VideoCapture(0,cv2.CAP_DSHOW); print('Press Q to close'); exec('while True:\n ret,f=c.read()\n if not ret: break\n cv2.imshow(\"Camera Preview\",f)\n if cv2.waitKey(1)&255==ord(\"q\"): break'); c.release(); cv2.destroyAllWindows()"
+python -c "import cv2; c=cv2.VideoCapture(0,cv2.CAP_DSHOW); ret,f=c.read(); cv2.imshow('Camera Preview',f) if ret else print('No frame'); cv2.waitKey(0); c.release(); cv2.destroyAllWindows()"
