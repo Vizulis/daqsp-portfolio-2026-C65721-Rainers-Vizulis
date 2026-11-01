@@ -1,1 +1,1 @@
-Copy-Item ".\data_dir\analog_data_20261101_125646.csv" "$env:USERPROFILE\Downloads\Homework2\" -Force
+Copy-Item ".\data_dir\images_20261101_125703" "$env:USERPROFILE\Downloads\Homework2\" -Recurse -Force
