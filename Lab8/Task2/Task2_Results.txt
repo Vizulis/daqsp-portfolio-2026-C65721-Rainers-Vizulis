@@ -1,0 +1,17 @@
+Lab 08 - Task 2: Hardware Trigger
+Date: 2026-10-31
+DAQ device: NI USB-6211
+Device name: Dev1
+Physical trigger pin: PFI0
+Python digital channel: Dev1/port0/line0
+Pull-down resistor: 10 kOhm
+Trigger type: Falling edge
+DAQ timeout: 10 s
+Camera: ASUS FHD webcam
+Resolution: 1280 x 720
+Configured FPS: 30
+
+Result:
+The hardware trigger was successfully detected.
+The camera recorded and saved images after the trigger.
+Image folder: images_20261031_181525

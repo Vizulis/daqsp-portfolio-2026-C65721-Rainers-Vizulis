@@ -1,0 +1,31 @@
+Lab 08 - Task 3: Triggered Image and Analog Acquisition
+Camera: ASUS FHD webcam
+Camera distance: approximately 40 cm
+Resolution: 1280 x 720
+Configured camera FPS: 30
+DAQ device: NI USB-6211 (Dev1)
+Analog channel: Dev1/ai0
+Input configuration: RSE
+Analog input range: -10 V to +10 V
+Sampling rate: 1000 Hz
+Pre-trigger samples: 2000
+Total samples: 4000
+Trigger: PFI0, falling edge
+Gain resistor: 100 ohm
+Filter: disabled (Rf shorted)
+Analog data: analog_data_20261101_125646.csv
+Images: images_20261101_125703
+
+Notes:
+The ball drop was recorded using the camera and NI USB-6211.
+The analog signal contains visible voltage peaks after the trigger.
+The ball impact was estimated to occur around frame 0081.
+The exact trigger threshold voltage was not measured.
+The precise synchronization between the analog data and camera frames was not verified.
+
+UREF measurement:
+Measured using NI USB-6211, channel Dev1/ai1.
+Input configuration: RSE.
+Measured UREF voltage: approximately 1.50 V.
+The voltage stabilized after an initial decrease.
+The relationship between UREF and the analog trigger threshold was not verified.

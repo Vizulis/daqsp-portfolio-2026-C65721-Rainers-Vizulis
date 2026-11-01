@@ -1,0 +1,11 @@
+Lab 08 - Task 1
+Date: 2026-10-31
+Camera: ASUS FHD webcam
+Resolution: 1280x720
+Configured FPS: 30
+Frames: 106
+Before trigger: 1.998 s
+After trigger: 2.014 s
+Actual FPS: 26.17
+Exposure: -5
+Focus: 50
