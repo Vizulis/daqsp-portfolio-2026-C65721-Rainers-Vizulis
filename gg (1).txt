@@ -1,1 +1,2 @@
-Copy-Item ".\get_ball_diameter.py" "$env:USERPROFILE\Downloads\Homework2\" -Force
+
+Copy-Item ".\calibrate_camera.py" "$env:USERPROFILE\Downloads\Homework2\Task4\" -Force
