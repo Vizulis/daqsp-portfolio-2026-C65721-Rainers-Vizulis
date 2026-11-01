@@ -1,1 +1,2 @@
-Get-ChildItem "$env:USERPROFILE\Downloads" -Recurse -File -Filter "undistorted_frame_0081*.png" | Select-Object FullName
+
+Get-ChildItem ".\data_dir" -Recurse -File -Filter "undistorted_frame_0081*.png" | ForEach-Object { $_.DirectoryName }
