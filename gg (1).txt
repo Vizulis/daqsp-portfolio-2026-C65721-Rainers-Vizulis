@@ -1,10 +1,2 @@
-
-        task.start()
-
-        print("Waiting for analog trigger...")
-        task.wait_until_done(timeout=DAQ_TIMEOUT)
-
-        data = task.read(
-            number_of_samples_per_channel=ANALOG_TOTAL_SAMPLES,
-            timeout=DAQ_TIMEOUT
-        )
+if TRIGGER_LEVEL is not None:
+    plt.axhline(y=TRIGGER_LEVEL, color="black", linestyle="dashed")
