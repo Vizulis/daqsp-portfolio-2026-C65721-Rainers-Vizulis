@@ -1,20 +1,5 @@
 
-@"
-Lab 08 - Task 3: Triggered Image and Analog Acquisition
-Camera: ASUS FHD webcam
-Camera distance: approximately 40 cm
-Resolution: 1280 x 720
-Configured camera FPS: 30
-DAQ device: NI USB-6211 (Dev1)
-Analog channel: Dev1/ai0
-Input configuration: RSE
-Analog input range: -10 V to +10 V
-Sampling rate: 1000 Hz
-Pre-trigger samples: 2000
-Total samples: 4000
-Trigger: PFI0, falling edge
-Gain resistor: 100 ohm
-Filter: disabled (Rf shorted)
-Analog data: analog_data_20261101_125646.csv
-Images: images_20261101_125703
-"@ | Set-Content "$env:USERPROFILE\Downloads\Homework2\Task3_Parameters.txt"
+$f = Get-ChildItem ".\data_dir\images_20261101_125703\frame_*.png" | Sort-Object Name
+"Frames: $($f.Count)"
+"First image: $($f[0].Name)"
+"Last image: $($f[-1].Name)"
