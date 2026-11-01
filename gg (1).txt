@@ -1,7 +1,1 @@
-Task 4 - Ball Diameter Measurement
-Ball diameter: approximately 88 pixels
-Measurement method: OpenCV Hough Circle Detection
-Scale factor: 0.5
-Camera distance: approximately 40 cm
-Image correction: Undistorted image
-HSV range: H 5-25, S 109-255, V 100-255
+Copy-Item ".\get_ball_diameter.py" "$env:USERPROFILE\Downloads\Homework2\" -Force
