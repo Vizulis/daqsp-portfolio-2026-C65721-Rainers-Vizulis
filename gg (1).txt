@@ -1,1 +1,1 @@
-Get-ChildItem -Recurse -Directory -Filter "undistorted_task3" | Select-Object FullName
+Get-ChildItem "$env:USERPROFILE\Downloads" -Recurse -File -Filter "undistorted_frame_0081*.png" | Select-Object FullName
