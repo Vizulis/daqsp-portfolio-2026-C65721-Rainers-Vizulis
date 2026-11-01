@@ -1,6 +1,2 @@
-UREF measurement:
-Measured using NI USB-6211, channel Dev1/ai1.
-Input configuration: RSE.
-Measured UREF voltage: approximately 1.50 V.
-The voltage stabilized after an initial decrease.
-The relationship between UREF and the analog trigger threshold was not verified.
+
+Copy-Item ".\camera_calibration_data_20261101_153233_535717.npz" "$env:USERPROFILE\Downloads\Homework2\" -Force
