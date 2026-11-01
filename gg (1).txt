@@ -1,1 +1,7 @@
-Copy-Item ".\data_dir\images_20261101_125703\frame_0081_*.png" "$env:USERPROFILE\Downloads\Homework2\" 
+
+Notes:
+The ball drop was recorded using the camera and NI USB-6211.
+The analog signal contains visible voltage peaks after the trigger.
+The ball impact was estimated to occur around frame 0081.
+The exact trigger threshold voltage was not measured.
+The precise synchronization between the analog data and camera frames was not verified.
