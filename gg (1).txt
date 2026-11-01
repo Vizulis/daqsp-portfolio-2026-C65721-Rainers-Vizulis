@@ -1,20 +1,10 @@
 
-import cv2
+        task.start()
 
-camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+        print("Waiting for analog trigger...")
+        task.wait_until_done(timeout=DAQ_TIMEOUT)
 
-if not camera.isOpened():
-    print("Camera could not be opened")
-else:
-    while True:
-        ret, frame = camera.read()
-        if not ret:
-            break
-
-        cv2.imshow("Live Preview", frame)
-
-        if cv2.waitKey(1) & 0xFF == ord("q"):
-            break
-
-camera.release()
-cv2.destroyAllWindows()
+        data = task.read(
+            number_of_samples_per_channel=ANALOG_TOTAL_SAMPLES,
+            timeout=DAQ_TIMEOUT
+        )
