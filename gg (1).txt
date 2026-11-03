@@ -1,2 +1,0 @@
-
-Copy-Item ".\calibrate_camera.py" "$env:USERPROFILE\Downloads\Homework2\Task4\" -Force
